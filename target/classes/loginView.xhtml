@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<TITLE>Iniciar Sesion</TITLE>
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+	<!--Import jQuery before materialize.js-->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<!-- Compiled and minified JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</h:head>
+
+<h:body >
+<body background="imagenes/Chicago.jpg">
+
+		<DIV class="container">
+			<DIV class="center-align">
+				<DIV class="row">
+					<DIV class="col s6 offset-s3 ">
+					<h1 class="grey-text text-lighten-5">Banco ICESI</h1>
+						<DIV class="card transparent">
+							<DIV class="card-content">
+								<IMG class=" responsive-img" style="max-width: 64px;"
+									src="https://linderosinmobiliaria.com/images/Service2.png" />
+								<DIV class="left-align">
+									<h:form id="login-form">
+										<p:growl autoUpdate="true" />
+										<DIV class="row">
+										    <DIV class="col s12 input-field">
+												<p:inputText id="login" required="true"
+												    binding="#{loginView.txtLogin}"
+													requiredMessage="Ingresa el Login" class="grey-text text-lighten-5" />
+												<h:outputLabel for="login" value="Login" class="grey-text text-lighten-5" />
+											</DIV>						
+							                <DIV class="col s12 input-field">
+												<p:password id="password" required="true"
+												    binding="#{loginView.txtClave}"
+													requiredMessage="Ingresa la Contraseña" class="grey-text text-lighten-5" />
+												<h:outputLabel for="password" value="Contraseña" class="grey-text text-lighten-5" />
+											</DIV>
+											<DIV class="col s12 input-field">
+												<p:commandButton binding="#{loginView.btnIniciarSesion}" action="#{loginView.actionIniciarSesion}" value="Iniciar Sesion" styleClass="btn btn-danger"  />
+											</DIV>
+										</DIV>
+									</h:form>
+								</DIV>
+							</DIV>
+						</DIV>
+					</DIV>
+				</DIV>
+			</DIV>
+		</DIV>	
+	
+	</body>
+	<SCRIPT>
+    $(document).on("ready",function(){
+	$('#login-page').css({'height': window.innerHeight + 'px'});
+	});
+    </SCRIPT>
+    <SCRIPT>
+	$(document).ready(function() {
+		$('select').material_select();
+	});
+</SCRIPT>
+
+</h:body>
+</html>

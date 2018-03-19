@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+
+<title>Banco Icesi</title>
+
+<!-- Compiled and minified CSS -->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+
+<!--Import jQuery before materialize.js-->
+
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!-- Compiled and minified JavaScript -->
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<link rel="stylesheet" href="fonts/style.css" />
+
+<style>
+.ui-datatable.borderless thead th, .ui-datatable.borderless tbody,
+	.ui-datatable.borderless tbody tr, .ui-datatable.borderless tbody td {
+	border-style: none;
+}
+
+.ui-datatable * {
+	border: 0px !important;
+}
+</style>
+
+</head>
+
+<h:body styleClass="grey darken-1">
+
+	<body background="imagenes/Chicago.jpg">
+
+		<div class="navbar-fixed">
+			<nav class="brown darken-3">
+				<div class="nav-wrapper">
+					<a href="#" class="center brand-logo">Banco ICESI</a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><a href="loginView.xhtml" class="waves-effect"><i
+								class="material-icons right">power_settings_new</i>Cerrar Sesion</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+
+		<ul id="slide-out" class="side-nav fixed">
+			<li><div class="user-view">
+					<div class="background">
+						<img class="responsive-img"
+							src="http://www.therecord.com.au/wp-content/uploads/2013/08/Money_gold_bars_HD_wallpaper-1024x768.jpg" />
+					</div>
+					<a href="#!user"> <img class="circle"
+						src="https://icon-icons.com/icons2/1091/PNG/512/bank_78392.png">
+					</img>
+					</a> <a href="#!name"><span class="white-text name">Administrador</span></a>
+					<a href="#!email"><span class="white-text email">admin@banco.icesi.edu.co</span></a>
+				</div></li>
+			<li><a href="inicioView.xhtml" class="waves-effect"><i
+					class="material-icons">home</i>Inicio</a></li>
+			<li><a href="clientesView.xhtml" class="waves-effect"><i
+					class="material-icons">business_center</i>Clientes</a></li>
+			<li><a href="consignacionesView.xhtml" class="waves-effect"><i
+					class="material-icons">attach_money</i>Consignaciones</a></li>
+			<li><a href="cuentasView.xhtml" class="waves-effect"><i
+					class="material-icons">account_balance</i>Cuentas</a></li>
+			<li><a href="retirosView.xhtml" class="waves-effect"><i
+					class="material-icons">monetization_on</i>Retiros</a></li>
+			<li><a href="usuariosView.xhtml" class="waves-effect"><i
+					class="material-icons">account_circle</i>Usuarios</a></li>
+			<li><a href="tiposUsuariosView.xhtml" class="waves-effect"><i
+					class="material-icons">assignment_ind</i>Tipos Usuarios</a></li>
+			<li><a href="tiposDocumentosView.xhtml" class="waves-effect"><i
+					class="material-icons">chrome_reader_mode</i>Tipos Documentos</a></li>
+		</ul>
+		<a href="#" data-activates="slide-out" class="button-collapse"><i
+			class="material-icons">menu</i></a>
+			
+		<div class="container">
+			<div class="center-align">
+				<div class="row">
+					<div class="col s10 offset-s3 ">
+						<p:growl id="msg" showDetail="true" />
+						<h1 class="grey-text text-lighten-5">Administrar
+							Retiros</h1>
+						<ul class="collapsible" data-collapsible="accordion">
+							<li>
+								<div class="collapsible-header">
+									<i class="material-icons">add_circle</i> Nuevo Retiro
+								</div>
+								<div class="collapsible-body">
+
+									<div class="card-panel teal lighten-2">
+										<DIV class="card">
+											<DIV class="card-content">
+												<IMG class="responsive-img" style="max-width: 200px;"
+													src="https://image.flaticon.com/icons/png/512/306/306232.png" />
+												<DIV class="left-align">
+													<h:form id="nuevoRetiro">
+														<p:growl autoUpdate="true" />
+														<DIV class="row">
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtCodRetNuevo" />
+																<p:outputLabel for="txtCodRetNuevo"
+																	value="Código de Retiro: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtNumCuentaNuevo" />
+																<p:outputLabel for="txtNumCuentaNuevo"
+																	value="No Cuenta: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtIdUsuarioNuevo" />
+																<p:outputLabel for="txtIdUsuarioNuevo"
+																	value="No Identificación del Usuario: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtValorNuevo" />
+																<p:outputLabel for="txtValorNuevo"
+																	value="Valor Retiro $: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtFechaNuevo" />
+																<p:outputLabel for="txtFechaNuevo" value="Fecha: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtDescripcionNuevo" />
+																<p:outputLabel for="txtDescripcionNuevo"
+																	value="Desripción: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:commandLink id="btnGuardar" value="Guardar"
+																	styleClass="btn btn-large"
+																	class="waves-effect waves-light btn grey-text text-lighten-5" />
+															</DIV>
+														</DIV>
+													</h:form>
+												</DIV>
+											</DIV>
+										</DIV>
+									</div>
+								</div>
+							</li>
+
+							<li>
+								<div class="collapsible-header">
+									<i class="material-icons">account_circle</i> Actualizar
+									Retiro Existente
+								</div>
+								<div class="collapsible-body">
+
+									<div class="card-panel teal lighten-2">
+										<DIV class="card">
+											<DIV class="card-content">
+												<IMG class="responsive-img" style="max-width: 200px;"
+													src="https://image.flaticon.com/icons/svg/306/306222.svg" />
+												<DIV class="left-align">
+													<h:form id="actualizarRetiro">
+														<p:growl autoUpdate="true" />
+														<DIV class="row">
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtCodRetModificar" />
+																<p:outputLabel for="txtCodRetModificar"
+																	value="Código de Retiro: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtNumCuentaModificar" />
+																<p:outputLabel for="txtNumCuentaModificar"
+																	value="No Cuenta: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtIdUsuarioModificar" />
+																<p:outputLabel for="txtIdUsuarioModificar"
+																	value="No Identificación del Usuario: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtValorModificar" />
+																<p:outputLabel for="txtValorModificar"
+																	value="Valor Retiro $: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtFechaModificar" />
+																<p:outputLabel for="txtFechaModificar" value="Fecha: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtDescripcionModificar" />
+																<p:outputLabel for="txtDescripcionModificar"
+																	value="Descripción: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:commandLink id="btnActualizar" value="Actualizar"
+																	styleClass="btn btn-large"
+																	class="waves-effect waves-light btn grey-text text-lighten-5" />
+															</DIV>
+														</DIV>
+													</h:form>
+												</DIV>
+											</DIV>
+										</DIV>
+									</div>
+								</div>
+							</li>
+
+							<li>
+								<div class="collapsible-header">
+									<i class="material-icons">cancel</i> Eliminar Retirio
+								</div>
+								<div class="collapsible-body">
+									<div class="card-panel teal lighten-2">
+										<DIV class="card">
+											<DIV class="card-content">
+												<IMG class="responsive-img" style="max-width: 200px;"
+													src="https://image.flaticon.com/icons/svg/236/236806.svg" />
+												<DIV class="left-align">
+													<h:form id="EliminarRetiro">
+														<p:growl autoUpdate="true" />
+														<DIV class="row">
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtCodRetEliminar" />
+																<p:outputLabel for="txtCodRetEliminar"
+																	value="Codigo de Retiro: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtNumCuentaEliminar" />
+																<p:outputLabel for="txtNumCuentaEliminar"
+																	value="No Cuenta: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:commandLink id="btnEliminar" value="Eliminar"
+																	styleClass="btn btn-large"
+																	class="waves-effect waves-light btn grey-text text-lighten-5 red darken-4" />
+															</DIV>
+														</DIV>
+													</h:form>
+												</DIV>
+											</DIV>
+										</DIV>
+									</div>
+								</div>
+							</li>
+
+							<li>
+								<div class="collapsible-header">
+									<i class="material-icons">search</i> Buscar Retiro
+								</div>
+								<div class="collapsible-body">
+									<div class="card-panel teal lighten-2">
+										<DIV class="card">
+											<DIV class="card-content">
+												<IMG class="responsive-img" style="max-width: 200px;"
+													src="https://image.flaticon.com/icons/svg/306/306213.svg" />
+												<DIV class="left-align">
+													<h:form id="BuscarRetiro">
+														<p:growl autoUpdate="true" />
+														<DIV class="row">
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtCodRetBusqueda" />
+																<p:outputLabel for="txtCodRetBusqueda"
+																	value="Código de Retiro: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtNumCuentaBusqueda" />
+																<p:outputLabel for="txtNumCuentaBusqueda"
+																	value="No Cuenta: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:commandLink id="btnBuscar" value="Buscar"
+																	update="BuscarRetiro" styleClass="btn btn-large"
+																	class="waves-effect waves-light btn grey-text text-lighten-5 " />
+															</DIV>
+															<DIV>
+																<p:spacer height="10" />
+																<p:separator />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtCodRetBuscar" readonly="true" />
+																<p:outputLabel for="txtCodRetBuscar"
+																	value="Código de Retiro: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtNumCuentaBuscar" readonly="true" />
+																<p:outputLabel for="txtNumCuentaBuscar"
+																	value="No Cuenta: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtIdUsuarioBuscar" readonly="true" />
+																<p:outputLabel for="txtIdUsuarioBuscar"
+																	value="No Identificación del Usuario: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtValorBuscar" readonly="true" />
+																<p:outputLabel for="txtValorBuscar"
+																	value="Valor Retiro $: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtFechaBuscar" readonly="true" />
+																<p:outputLabel for="txtFechaBuscar" value="E-mail: " />
+															</DIV>
+															<DIV class="col s12 input-field">
+																<p:inputText id="txtDescripcionBuscar" readonly="true" />
+																<p:outputLabel for="txtDescripcionBuscar"
+																	value="E-mail: " />
+															</DIV>
+														</DIV>
+													</h:form>
+												</DIV>
+											</DIV>
+										</DIV>
+									</div>
+								</div>
+							</li>
+
+							<li>
+								<div class="collapsible-header">
+									<i class="material-icons">group</i> Ver Todos Los
+									Retiros
+								</div>
+								<div class="collapsible-body">
+									<div class="card-panel teal lighten-2">
+										<DIV class="card">
+											<DIV class="card-content">
+												<IMG class="responsive-img" style="max-width: 200px;"
+													src="https://image.flaticon.com/icons/svg/306/306210.svg" />
+												<DIV class="left-align">
+													<h:form id="verRetiros">
+														<p:growl autoUpdate="true" />
+														<DIV class="row">
+															<DIV class="col s12 input-field">
+																<p:commandLink id="btnVerRetiros"
+																	value="Actualizar Retiros"
+																	styleClass="btn btn-large" update="dtRetiros"
+																	class="waves-effect waves-light btn grey-text text-lighten-5" />
+															</DIV>
+															<DIV>
+																<p:spacer height="10" />
+																<p:separator />
+															</DIV>
+															<DIV>
+																<p:spacer height="20" />
+															</DIV>
+															<DIV>
+																<p:dataTable id="dtRetiros"
+																	styleClass="borderlessS"
+																	tableStyleClass="striped centered highlight responsive-table"
+																	var="ret" paginator="true"
+																	paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+																	paginatorPosition="bottom">
+
+																	<p:column headerText="Código Retiro">
+																		<h:outputText />
+																	</p:column>
+
+																	<p:column headerText="No Cuenta">
+																		<h:outputText />
+																	</p:column>
+
+																	<p:column headerText="Identificación Usuario">
+																		<h:outputText />
+																	</p:column>
+
+																	<p:column headerText="Valor">
+																		<h:outputText />
+																	</p:column>
+
+																	<p:column headerText="Fecha">
+																		<h:outputText />
+																	</p:column>
+
+																	<p:column headerText="Descripción">
+																		<h:outputText />
+																	</p:column>
+
+																</p:dataTable>
+															</DIV>
+														</DIV>
+													</h:form>
+												</DIV>
+											</DIV>
+										</DIV>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>	
+
+		<footer class="page-footer right-align grey darken-4">
+			<div class="container">
+				<div class="row">
+					<div class="col l6 s12">
+						<h5 class="white-text">Información de Contacto</h5>
+						<p class="grey-text text-lighten-4 ">web-developers@banco.icesi.edu.co</p>
+					</div>
+					<div class="col l4 offset-l2 s12">
+						<h5 class="white-text">Siguenos en</h5>
+						<ul>
+							<li><a class="grey-text text-lighten-3" href="#!"><span
+									class="icon-facebook"></span> Facebook</a></li>
+							<li><a class="grey-text text-lighten-3" href="#!"><span
+									class="icon-twitter"></span> Twitter</a></li>
+							<li><a class="grey-text text-lighten-3" href="#!"><span
+									class="icon-instagram"></span> Instagram</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="footer-copyright">
+				<div class="container">© 2017 Copyright Grupo BancoICESI</div>
+			</div>
+		</footer>
+
+	</body>
+
+	<SCRIPT>
+		$(document).ready(function() {
+			$('select').material_select();
+		});
+	</SCRIPT>
+	<SCRIPT>
+		$(document).on(
+				"ready",
+				function() {
+					$(".ui-paginator-first.ui-state-default.ui-corner-all")
+							.addClass("btn");
+					$(".ui-paginator-last.ui-state-default.ui-corner-all")
+							.addClass("btn");
+					$(".ui-paginator-next.ui-state-default.ui-corner-all")
+							.addClass("btn");
+					$(".ui-paginator-prev.ui-state-default.ui-corner-all")
+							.addClass("btn");
+				});
+	</SCRIPT>
+	<SCRIPT>
+		$(document).ready(function() {
+			$(".button-collapse").sideNav();
+		});
+	</SCRIPT>
+
+</h:body>
+
+</html>

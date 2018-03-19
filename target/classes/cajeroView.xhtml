@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+
+<title>Banco Icesi</title>
+<!-- Compiled and minified CSS -->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+
+<!--Import jQuery before materialize.js-->
+
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!-- Compiled and minified JavaScript -->
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<link rel="stylesheet" href="fonts/style.css" />
+</head>
+
+<h:body>
+<p:growl id="msg" showDetail="true"/>
+	<div class="navbar-fixed">
+		<nav class=" brown darken-3">
+			<div class="nav-wrapper">
+				<a href="#" class="center brand-logo">Banco ICESI</a> <a href="#"
+					class="brand-logo">Cajero</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="loginView.xhtml" class="waves-effect"><i
+							class="material-icons right">power_settings_new</i>Cerrar Sesion</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	
+	<div id="bannerIndex" class="parallax-container">
+		<div class="section no-pad-bot">
+			<div class="container">
+				
+				<br></br>
+				<br></br>
+				
+				<h1 class="header center grey-text text-lighten-5">Banco Icesi</h1>
+				<div class="row center">
+					<h5 class="header col s12 teal-text text-lighten-2">Las
+						transacciones más seguras están aquí. No te pierdas
+						la oportunidad de pertenecer a nuestra red bancaria</h5>
+					<h5 class="header col s12 grey-text text-lighten-5">Bienvenido
+						al Banco de la Universidad ICESI</h5>
+				</div>
+				
+				<div class="left-align">
+					<a> <img class="circle resposive-img" style="max-width: 100px;"
+						src="http://mifranquiciaexitosa.com/wp-content/uploads/2014/12/Final-Feliz.jpg">
+					</img>
+					</a> <br></br> <a><span class="white-text name">Cajero
+							</span></a> <br></br> <a><span class=" white-text email">cajero@banco.icesi.edu.co</span></a>
+				</div>
+			
+			</div>
+		
+		</div>
+		
+		<div class="parallax">
+			<img src="imagenes/empire.jpg" />
+		</div>
+	</div>
+	
+	<div class="section white">
+	<div class="row container">
+	
+	<h2 class="header">Retiros</h2>
+	<h5 class="header col s12">Nuevo Retiro</h5>
+
+			<div class="center-align">
+				<img class="responsive-img" style="max-width: 200px;"
+					src="https://image.flaticon.com/icons/svg/138/138306.svg" />
+			</div>
+			
+			<h:form id="crearRetiro">
+			<p:growl autoUpdate="true" />
+			
+			<DIV class="col s6 input-field">
+				<p:inputText id="txtNumeroCuentaRet" binding="#{cajeroView.txtNumeroCuentaRet}"/>
+				<p:outputLabel for="txtNumeroCuentaRet"
+					value="No Cuenta: " />
+			</DIV>
+
+			<DIV class="col s6 input-field">
+				<p:inputText id="txtValorRet" binding="#{cajeroView.txtValorRet}" />
+				<p:outputLabel for="txtValorRet"
+					value="Valor Retiro $: " />
+			</DIV>
+
+				<DIV class="col s6 input-field ">
+					<h:selectOneMenu id="somDescripcionRet" value="#{cajeroView.descripcionRetiro}"
+						class="teal-text teal-lighten-2">
+						<f:selectItem itemValue="-1"
+							itemLabel="Descripción" />
+						<f:selectItems />
+						<f:selectItem itemValue="RETIRO"
+							itemLabel="RETIRO" />
+						<f:selectItems />
+					</h:selectOneMenu>
+				</DIV>
+			
+			<DIV class="col s6 input-field"></DIV>
+				<DIV class="col s6 input-field"></DIV>
+				
+
+			<DIV class="col s12 input-field ">
+			<p:commandButton id="btnLimpiarRet" value="Limpiar" binding="#{cajeroView.btnLimpiarRet}"
+				action="#{cajeroView. actionLimpiarRetiros}" update="crearRetiro"
+				styleClass="btn btn-large"
+				class="waves-effect waves-light btn grey-text text-lighten-5 red darken-4" />
+			</DIV>
+			
+			<DIV class="col s12 input-field ">
+				<p:commandButton id="btnRetirar" value="Retirar" binding="#{cajeroView.btnRetirar}"
+					action="#{cajeroView.actionRetirar}"
+					styleClass="btn btn-large"
+					class="waves-effect waves-light btn grey-text text-lighten-5 blue darken-4" />
+			</DIV>		
+			
+			</h:form>
+			
+			<DIV >
+				<p:spacer height="40" />
+			</DIV>
+			
+			<h5 class="header col s12">Listado de Retiros</h5>
+			
+			<div class="center-align">
+				<img class="responsive-img" style="max-width: 200px;"
+					src="https://image.flaticon.com/icons/svg/138/138279.svg" />
+			</div>
+			
+			<h:form id="listaRetiros">
+
+				<DIV>
+					<p:dataTable id="dtRetiros" styleClass="borderlessS"
+						tableStyleClass="striped centered highlight responsive-table"
+						var="ret" paginator="true" value="#{cajeroView.tableRetiros}"
+						paginatorTemplate="{CurrentPageReport}  {PreviousPageLink} {PageLinks} {NextPageLink} "
+						>
+
+						<p:column headerText="Código Retiro">
+							<h:outputText value="#{ret.id.retCodigo}"/>
+						</p:column>
+
+						<p:column headerText="No Cuenta">
+							<h:outputText value="#{ret.id.cueNumero}" />
+						</p:column>
+
+						<p:column headerText="Identificación Usuario">
+							<h:outputText value="#{ret.usuarios.usuCedula}" />
+						</p:column>
+
+						<p:column headerText="Valor">
+							<h:outputText value="#{ret.retValor}"/>
+						</p:column>
+
+						<p:column headerText="Fecha">
+							<h:outputText value="#{ret.retFecha}" />
+						</p:column>
+
+						<p:column headerText="Descripción">
+							<h:outputText value="#{ret.retDescripcion}" />
+						</p:column>
+
+					</p:dataTable>
+				</DIV>
+
+				<DIV class="col s12 input-field">
+					<p:commandButton id="btnVerRetiros" value="Actualizar"
+						styleClass="btn btn-large" update="dtRetiros" actionListener="#{cajeroView.showTableRetiros}"
+						class="waves-effect waves-light btn grey-text text-lighten-5 blue darken-4" />
+				</DIV>
+
+			</h:form>
+			
+			
+
+		</div>
+	
+	</div>
+
+	<div class="parallax-container">
+		<div class="parallax">
+			<img src="imagenes/TarjetaCredito.jpg" />
+		</div>
+	</div>
+
+	<div class="section white">
+		<div class="row container">
+
+			<h2 class="header">Consignaciones</h2>
+			<h5 class="header col s12">Nueva Consignación</h5>
+
+			<div class="center-align">
+				<img class="responsive-img" style="max-width: 200px;"
+					src="https://image.flaticon.com/icons/svg/273/273546.svg" />
+			</div>
+
+			<h:form id="crearConsignacion">
+
+				<p:growl autoUpdate="true" />
+				
+				<DIV class="col s6 input-field">
+				<p:inputText id="txtNumeroCuentaCons" binding="#{cajeroView.txtNumeroCuentaCons}" />
+				<p:outputLabel for="txtNumeroCuentaCons"
+					value="No Cuenta: " />
+			</DIV>
+
+			<DIV class="col s6 input-field">
+				<p:inputText id="txtValorCons" binding="#{cajeroView.txtValorCons}" />
+				<p:outputLabel for="txtValorCons"
+					value="Valor Consignación $: " />
+			</DIV>
+
+				<DIV class="col s6 input-field ">
+					<h:selectOneMenu id="somDescripcionCons" value="#{cajeroView.descripcionConsignacion}"
+						class="teal-text teal-lighten-2">
+						<f:selectItem itemValue="-1"
+							itemLabel="Descripción" />						
+						<f:selectItem itemValue="APERTURA DE CUENTA"
+							itemLabel="APERTURA DE CUENTA" />
+						<f:selectItem itemValue="CONSIGNACION"
+							itemLabel="CONSIGNACION" />
+					</h:selectOneMenu>
+				</DIV>
+				
+				<DIV class="col s6 input-field"></DIV>
+				<DIV class="col s6 input-field"></DIV>
+				
+
+			<DIV class="col s12 input-field ">
+			<p:commandButton id="btnLimpiarCons" value="Limpiar" binding="#{cajeroView.btnLimpiarCons}"
+				styleClass="btn btn-large" update="crearConsignacion" action="#{cajeroView.actionLimpiarcConsignaciones}"
+				class="waves-effect waves-light btn grey-text text-lighten-5 red darken-4" />
+			</DIV>
+			
+			<DIV class="col s12 input-field ">
+				<p:commandButton id="btnConsignar" value="Consignar" binding="#{cajeroView.btnConsignar}"
+					action="#{cajeroView.actionConsignar}"
+					styleClass="btn btn-large"
+					class="waves-effect waves-light btn grey-text text-lighten-5 blue darken-4" />
+			</DIV>
+						
+
+			</h:form>
+			
+			<DIV >
+				<p:spacer height="40" />
+			</DIV>		
+			
+			<h5 class="header col s12">Listado de Consignaciones</h5>
+			
+			<div class="center-align">
+				<img class="responsive-img" style="max-width: 200px;"
+					src="https://image.flaticon.com/icons/svg/621/621557.svg" />
+			</div>
+
+			<h:form id="listaConsignaciones">
+				<p:growl autoUpdate="true" />
+				<DIV>
+					<p:dataTable id="dtConsignaciones" styleClass="borderlessS"
+						tableStyleClass="striped centered highlight responsive-table"
+						var="cons" paginator="true" value="#{cajeroView.tableConsignaciones}"
+						paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} "
+						>
+
+						<p:column headerText="Código Consignación">
+							<h:outputText value="#{cons.id.conCodigo}" />
+						</p:column>
+
+						<p:column headerText="No Cuenta">
+							<h:outputText value="#{cons.id.cueNumero}" />
+						</p:column>
+
+						<p:column headerText="Identificación Usuario">
+							<h:outputText value="#{cons.usuarios.usuCedula}" />
+						</p:column>
+
+						<p:column headerText="Valor">
+							<h:outputText value="#{cons.conValor}" />
+						</p:column>
+
+						<p:column headerText="Fecha">
+							<h:outputText value="#{cons.conFecha}" />
+						</p:column>
+
+						<p:column headerText="Descripción">
+							<h:outputText value="#{cons.conDescripcion}" />
+						</p:column>
+
+					</p:dataTable>
+				</DIV>
+				<DIV class="col s12 input-field">
+					<p:commandButton id="btnVerConsignaciones"
+						value="Actualizar" styleClass="btn btn-large"
+						update="dtConsignaciones" actionListener="#{cajeroView.showTableConsignaciones}"
+						class="waves-effect waves-light btn grey-text text-lighten-5 blue darken-4" />
+				</DIV>
+			</h:form>
+
+		</div>
+
+	</div>
+
+	<div class="parallax-container">
+		<div class="parallax">
+			<img src="imagenes/Chicago.jpg" />
+		</div>
+	</div>
+
+
+	<footer class="page-footer right-align grey darken-4">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="white-text">Información de Contacto</h5>
+					<p class="grey-text text-lighten-4 ">web-developers@banco.icesi.edu.co</p>
+				</div>
+				<div class="col l4 offset-l2 s12">
+					<h5 class="white-text">Siguenos en</h5>
+					<ul>
+						<li><a class="grey-text text-lighten-3" href="#!"><span
+								class="icon-facebook"></span> Facebook</a></li>
+						<li><a class="grey-text text-lighten-3" href="#!"><span
+								class="icon-twitter"></span> Twitter</a></li>
+						<li><a class="grey-text text-lighten-3" href="#!"><span
+								class="icon-instagram"></span> Instagram</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">© 2017 Copyright Grupo BancoICESI</div>
+		</div>
+	</footer>
+
+	<script>
+		$(document).ready(function() {
+			$('.parallax').parallax();
+		});
+	</script>
+
+	<script>
+		$(document).ready(function() {
+			$('select').material_select();
+		});
+	</script>
+	<script>
+		$(document).on(
+				"ready",
+				function() {
+					$(".ui-paginator-first.ui-state-default.ui-corner-all")
+							.addClass("btn");
+					$(".ui-paginator-last.ui-state-default.ui-corner-all")
+							.addClass("btn");
+					$(".ui-paginator-next.ui-state-default.ui-corner-all")
+							.addClass("btn");
+					$(".ui-paginator-prev.ui-state-default.ui-corner-all")
+							.addClass("btn");
+				});
+	</script>
+	
+
+</h:body>
+
+</html>
